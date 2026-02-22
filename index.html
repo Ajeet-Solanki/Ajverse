@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual for Life | Engineering the Ordinary</title>
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --dark: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text: #f8fafc;
+            --transition: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- FLASH SCREEN (IGNITION) --- */
+        #flash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s var(--transition), visibility 0.8s;
+            cursor: pointer;
+        }
+
+        .ignition-btn {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            background: transparent;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 212, 255, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 212, 255, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 212, 255, 0.4); }
+        }
+
+        .flash-text {
+            margin-top: 20px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* Class to hide the flash screen */
+        .hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: scale(1.1);
+        }
+
+        /* --- MAIN CONTENT --- */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-bottom: 2px solid var(--primary);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-text {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #00d4ff, #0055ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .category {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 18px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="flash-screen" onclick="startManual()">
+        <button class="ignition-btn">Enter into Nature's Original Code</button>
+        <p class="flash-text">Nature had a 4-billion-year head start. We're just reading the manual.</p>
+    </div>
+
+    <header>
+        <div class="logo-text">MANUAL FOR LIFE</div>
+        <p style="color: #94a3b8; max-width: 600px; margin-top: 10px;">
+            Technical Basics. Confidence in Technology. Nature-Inspired Engineering for the Modern Human.
+        </p>
+    </header>
+
+    <main class="content-grid">
+        <article class="card">
+            <span class="category">BIOMIMICRY & ELECTRONICS</span>
+            <h3>Bat Radar & Self-Driving Cars</h3>
+            <p>How LiDAR and Ultrasonic sensors "see" the world using the same physics as nature's original aviators.</p>
+            <a href="#" class="btn">Read Manual</a>
+        </article>
+
+        <article class="card">
+            <span class="category">MECHANICAL</span>
+            <h3>The Kingfisher Train</h3>
+            <p>Decompressing the aerodynamics of Japan's 500 Series Shinkansen and its biological beak.</p>
+            <a href="#" class="btn">Read Manual</a>
+        </article>
+
+        <article class="card">
+            <span class="category">CODING & SYSTEMS</span>
+            <h3>Ant Colony Logic</h3>
+            <p>Exploring how distributed intelligence helps us solve complex logistics problems.</p>
+            <a href="#" class="btn">Read Manual</a>
+        </article>
+    </main>
+
+    <script>
+        function startManual() {
+            const screen = document.getElementById('flash-screen');
+            screen.classList.add('hidden');
+            
+            // Allow clicking through once hidden
+            setTimeout(() => {
+                screen.style.display = 'none';
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
