@@ -151,6 +151,24 @@
             background: var(--primary);
             color: var(--dark);
         }
+        @media (max-width: 600px) {
+            .ignition-btn {
+                width: 90%;             /* Occupy most of the width but not all */
+                padding: 18px 20px;     /* Reduce padding so text doesn't hit edges */
+                font-size: 0.85rem;     /* Shrink text slightly to fit on one line */
+                letter-spacing: 1px;    /* Tighten letters slightly */
+            }
+        
+            .flash-text {
+                font-size: 0.95rem;     /* Make tagline slightly smaller */
+                width: 85%;             /* Ensure it doesn't touch the screen edge */
+                margin: 0 auto;
+            }
+        
+            .logo-text {
+                font-size: 2.5rem;      /* Ensure main title doesn't overflow later */
+            }
+        }
     </style>
 </head>
 <body>
@@ -205,3 +223,4 @@
 </body>
 
 </html>
+
