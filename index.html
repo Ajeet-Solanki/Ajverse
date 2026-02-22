@@ -24,47 +24,56 @@
 
         /* --- FLASH SCREEN (IGNITION) --- */
         #flash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.8s var(--transition), visibility 0.8s;
-            cursor: pointer;
-        }
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        
+        /* THE CENTERING MAGIC */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertical Center */
+        align-items: center;     /* Horizontal Center */
+        text-align: center;      /* Text Alignment */
+        
+        z-index: 1000;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+        cursor: pointer;
+        padding: 20px;
+    }
 
         .ignition-btn {
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            background: transparent;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-            animation: pulse 2s infinite;
-        }
+                padding: 22px 45px;
+                font-size: 1.1rem;
+                font-weight: 800;
+                color: var(--primary);
+                border: 2px solid var(--primary);
+                background: transparent;
+                border-radius: 50px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+                animation: pulse 2s infinite;
+                margin-bottom: 25px; /* Space between button and tagline */
+                font-family: 'Segoe UI', sans-serif;
+            }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 212, 255, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 212, 255, 0.6); }
-            100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 212, 255, 0.4); }
-        }
+        0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+        50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(0, 212, 255, 0.5); }
+        100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+    }
 
         .flash-text {
-            margin-top: 20px;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
+        color: #94a3b8;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        max-width: 500px;
+        line-height: 1.5;
+        opacity: 0.8;
+    }
 
         /* Class to hide the flash screen */
         .hidden {
@@ -148,7 +157,7 @@
 
     <div id="flash-screen" onclick="startManual()">
         <button class="ignition-btn">Enter into Nature's Original Code</button>
-        <p class="flash-text">Nature had a 4-billion-year head start. We're just reading the manual.</p>
+        <p class="flash-text">Nature had a 4-billion-year head start. <br> We're just reading the manual.</p>
     </div>
 
     <header>
@@ -194,4 +203,5 @@
     </script>
 
 </body>
+
 </html>
