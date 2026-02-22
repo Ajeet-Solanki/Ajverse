@@ -24,40 +24,47 @@
 
         /* --- FLASH SCREEN (IGNITION) --- */
         #flash-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-        
-        /* THE CENTERING MAGIC */
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* Vertical Center */
-        align-items: center;     /* Horizontal Center */
-        text-align: center;      /* Text Alignment */
-        
-        z-index: 1000;
-        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
-        cursor: pointer;
-        padding: 20px;
-    }
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* Uses 100% of the visible screen height and width */
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            
+            /* AUTOMATIC CENTERING ENGINE */
+            display: flex;
+            flex-direction: column;   /* Stack elements vertically */
+            justify-content: center;  /* Center vertically */
+            align-items: center;      /* Center horizontally */
+            text-align: center;       /* Center text lines */
+            
+            z-index: 1000;
+            transition: all 0.8s ease;
+            cursor: pointer;
+            padding: 20px;            /* Safety buffer for small screens */
+            box-sizing: border-box;   /* Includes padding in width calculation */
+        }
 
         .ignition-btn {
-                padding: 22px 45px;
-                font-size: 1.1rem;
-                font-weight: 800;
+                /* Max-width ensures it never gets too big on desktop */
+                /* Width: auto + padding ensures it fits the text on mobile */
+                max-width: 90%;
+                width: auto;
+                padding: 20px 40px;
+                
+                /* Font size using 'vw' makes it scale with screen width */
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
+                
+                font-weight: bold;
                 color: var(--primary);
                 border: 2px solid var(--primary);
                 background: transparent;
                 border-radius: 50px;
                 text-transform: uppercase;
                 letter-spacing: 2px;
-                box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+                margin-bottom: 2rem;
                 animation: pulse 2s infinite;
-                margin-bottom: 25px; /* Space between button and tagline */
-                font-family: 'Segoe UI', sans-serif;
             }
 
         @keyframes pulse {
@@ -66,14 +73,14 @@
         100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
     }
 
-        .flash-text {
-        color: #94a3b8;
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-        max-width: 500px;
-        line-height: 1.5;
-        opacity: 0.8;
-    }
+      .flash-text {
+                    max-width: 600px;         /* Prevents text from stretching too thin */
+                    width: 85%;              /* Responsive width */
+                    font-size: clamp(0.85rem, 2vw, 1.1rem);
+                    color: #94a3b8;
+                    line-height: 1.6;
+                    margin: 0;               /* Resets browser defaults */
+                    }
 
         /* Class to hide the flash screen */
         .hidden {
@@ -223,4 +230,5 @@
 </body>
 
 </html>
+
 
