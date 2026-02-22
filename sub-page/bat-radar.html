@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bat Radar | Manual for Life</title>
+    <style>
+        /* Reuse the root and transition styles from your main page */
+        :root { --primary: #00d4ff; --dark: #0f172a; --text: #f8fafc; }
+        body { 
+            background: var(--dark); color: var(--text); font-family: sans-serif; margin: 0;
+            opacity: 0; transition: opacity 1s ease; /* Transition Effect */
+        }
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; }
+        .back-link { color: var(--primary); text-decoration: none; margin-bottom: 20px; display: block; }
+        h1 { color: var(--primary); font-size: 3rem; }
+        .section { border-left: 3px solid var(--primary); padding-left: 20px; margin: 30px 0; }
+        h2 { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+    </style>
+</head>
+<body onload="document.body.style.opacity='1'">
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← BACK TO INDEX</a>
+        <h1>Bat Radar & Self-Driving Cars</h1>
+        
+        <div class="section">
+            <h2>The Biological Code</h2>
+            <p>Bats use echolocation to navigate. They emit a sound and calculate the distance based on the echo's return time.</p>
+        </div>
+
+        <div class="section">
+            <h2>The Engineering Copy</h2>
+            <p>Self-driving cars use LiDAR (Light Detection and Ranging). Instead of sound, they use laser pulses to build a 3D map.</p>
+        </div>
+
+        </div>
+
+</body>
+</html>
