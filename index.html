@@ -199,13 +199,13 @@
                     const data = await response.json();
 
                     htmlContent += `
-                        <article class="card">
-                            <span class="category">${data.category}</span>
-                            <h3>${data.title}</h3>
-                            <p>${data.description}</p>
-                            <a href="article.html?id=${data.id}" class="btn">Read Manual</a>
-                        </article>
-                    `;
+                            <article class="card">
+                                <span class="category">${data.category}</span>
+                                <h3>${data.title}</h3>
+                                <p>${data.description}</p>
+                                <a href="sub-page/${file.replace('.json', '.html')}" class="btn">Read Manual</a>
+                            </article>
+                        `;
                 } catch (error) {
                     console.error("Manual Fetch Error:", error);
                 }
@@ -228,6 +228,7 @@
 </body>
 
 </html>
+
 
 
 
