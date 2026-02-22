@@ -1,0 +1,14 @@
+{
+  "id": "bat-radar-001",
+  "category": "BIOMIMICRY & ELECTRONICS",
+  "title": "Bat Radar & Self-Driving Cars",
+  "subtitle": "How nature's original aviators inspired the sensors of the future.",
+  "description": "How LiDAR and Ultrasonic sensors 'see' the world using the same physics as bats.",
+  "content": {
+    "biological_inspiration": "Bats emit ultrasonic chirps and analyze the returning echoes to map their environment in total darkness.",
+    "technical_equivalent": "Ultrasonic sensors use piezoelectric transducers, while LiDAR uses pulsed laser light to measure 'Time of Flight'.",
+    "engineering_principle": "Time of Flight (ToF) calculations for distance mapping.",
+    "coding_logic": "Point cloud generation and emergency braking algorithms based on proximity thresholds."
+  },
+  "tags": ["Echolocation", "LiDAR", "Ultrasonic", "ToF"]
+}

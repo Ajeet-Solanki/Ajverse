@@ -1,0 +1,14 @@
+{
+  "id": "kingfisher-train-002",
+  "category": "MECHANICAL",
+  "title": "The Kingfisher Train",
+  "subtitle": "Fluid dynamics: From a splashless dive to a silent bullet train.",
+  "description": "Decompressing the aerodynamics of Japan's 500 Series Shinkansen and its biological beak.",
+  "content": {
+    "biological_inspiration": "The Kingfisher's beak is wedge-shaped, allowing it to move from low-density air to high-density water with minimal resistance.",
+    "technical_equivalent": "The Shinkansen nose was redesigned to mimic this shape to prevent atmospheric pressure waves (sonic booms) in tunnels.",
+    "engineering_principle": "Aero-acoustics and reduction of drag coefficients.",
+    "mechanical_impact": "15% reduction in electricity consumption and significantly quieter tunnel exits."
+  },
+  "tags": ["Aerodynamics", "Shinkansen", "Fluid Dynamics", "Biomimicry"]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ant-logic-003",
+  "category": "CODING & SYSTEMS",
+  "title": "Ant Colony Logic",
+  "subtitle": "Distributed intelligence and the art of pathfinding.",
+  "description": "Exploring how distributed intelligence helps us solve complex logistics problems.",
+  "content": {
+    "biological_inspiration": "Ants leave pheromone trails to mark the shortest path to food, creating a self-optimizing network.",
+    "technical_equivalent": "Ant Colony Optimization (ACO) algorithms used in GPS routing, network packet switching, and delivery logistics.",
+    "engineering_principle": "Decentralized control and emergent behavior.",
+    "coding_logic": "Probabilistic path selection and pheromone evaporation rates in software simulation."
+  },
+  "tags": ["Algorithms", "Logistics", "Swarm Intelligence", "Optimization"]
+}
