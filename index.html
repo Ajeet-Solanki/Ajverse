@@ -194,7 +194,7 @@
 
             for (const file of articleFiles) {
                 try {
-                    const response = await fetch(`articles/${file}`);
+                    const response = await fetch(`Articles/${file}`);
                     if (!response.ok) throw new Error(`Could not find ${file}`);
                     const data = await response.json();
 
@@ -228,6 +228,7 @@
 </body>
 
 </html>
+
 
 
 
