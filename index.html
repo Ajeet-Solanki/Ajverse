@@ -192,28 +192,55 @@
         </p>
     </header>
 
-    <main class="content-grid">
-        <article class="card">
-            <span class="category">BIOMIMICRY & ELECTRONICS</span>
-            <h3>Bat Radar & Self-Driving Cars</h3>
-            <p>How LiDAR and Ultrasonic sensors "see" the world using the same physics as nature's original aviators.</p>
-            <a href="#" class="btn">Read Manual</a>
-        </article>
+    <footer>
+        &copy; 2026 Manual for Life | Built by a Mechanical-Electrical-Coding Engineer.
+    </footer>
 
-        <article class="card">
-            <span class="category">MECHANICAL</span>
-            <h3>The Kingfisher Train</h3>
-            <p>Decompressing the aerodynamics of Japan's 500 Series Shinkansen and its biological beak.</p>
-            <a href="#" class="btn">Read Manual</a>
-        </article>
+    <script>
+        const articleFiles = [
+            'bat-radar.json',
+            'kingfisher-train.json',
+            'ant-logic.json'
+        ];
 
-        <article class="card">
-            <span class="category">CODING & SYSTEMS</span>
-            <h3>Ant Colony Logic</h3>
-            <p>Exploring how distributed intelligence helps us solve complex logistics problems.</p>
-            <a href="#" class="btn">Read Manual</a>
-        </article>
-    </main>
+        async function loadManualArticles() {
+            const grid = document.getElementById('mainGrid');
+            grid.innerHTML = '<p style="text-align:center; width:100%; color:var(--primary);">Accessing Manual Records...</p>';
+
+            let htmlContent = '';
+
+            for (const file of articleFiles) {
+                try {
+                    const response = await fetch(`articles/${file}`);
+                    if (!response.ok) throw new Error(`Could not find ${file}`);
+                    const data = await response.json();
+
+                    htmlContent += `
+                        <article class="card">
+                            <span class="category">${data.category}</span>
+                            <h3>${data.title}</h3>
+                            <p>${data.description}</p>
+                            <a href="article.html?id=${data.id}" class="btn">Read Manual</a>
+                        </article>
+                    `;
+                } catch (error) {
+                    console.error("Manual Fetch Error:", error);
+                }
+            }
+            grid.innerHTML = htmlContent;
+        }
+
+        function startManual() {
+            const screen = document.getElementById('flash-screen');
+            screen.classList.add('hidden');
+            
+            loadManualArticles();
+
+            setTimeout(() => {
+                screen.style.display = 'none';
+            }, 800);
+        }
+    </script>
 
     <script>
         function startManual() {
@@ -230,5 +257,6 @@
 </body>
 
 </html>
+
 
 
