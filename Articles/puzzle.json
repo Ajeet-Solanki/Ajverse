@@ -1,7 +1,7 @@
 {
   "id": "puzzle-003",
-  "category": "puzzle",
-  "title": "Engineering Puzzle",
+  "category": "Puzzle",
+  "title": "Engineering Problem",
   "subtitle": "Lets See who can solve.",
   "description": "This problem require basic Common Sense",
   "tags": ["Algorithms", "Logistics", "Swarm Intelligence", "Optimization"]
