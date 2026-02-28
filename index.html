@@ -186,18 +186,21 @@
         'ant-logic.json'
     ];
 
-    // Check if user already entered during this session
     window.onload = function() {
+        // If returning from a sub-page, skip the flash screen
         if (sessionStorage.getItem('manualEntered') === 'true') {
             const screen = document.getElementById('flash-screen');
-            if (screen) screen.style.display = 'none'; 
-            loadManualArticles(); 
+            if (screen) screen.style.display = 'none';
+            loadManualArticles();
         }
     };
 
     async function loadManualArticles() {
         const grid = document.getElementById('mainGrid');
-        if (!grid) return;
+        if (!grid) {
+            console.error("Critical Error: 'mainGrid' element not found in HTML.");
+            return;
+        }
 
         grid.innerHTML = '<p style="text-align:center; width:100%; color:var(--primary);">Accessing Manual Records...</p>';
 
@@ -205,12 +208,15 @@
 
         for (const file of articleFiles) {
             try {
-                // Fetch the data from the /articles/ folder
+                // Ensure this path matches your folder name EXACTLY
                 const response = await fetch(`articles/${file}`);
-                if (!response.ok) throw new Error(`Could not find ${file}`);
-                const data = await response.json();
+                
+                if (!response.ok) {
+                    console.error(`Failed to load: articles/${file} - Status: ${response.status}`);
+                    continue;
+                }
 
-                // Create the link by replacing .json with .html
+                const data = await response.json();
                 const pageLink = `sub-page/${file.replace('.json', '.html')}`;
 
                 htmlContent += `
@@ -225,7 +231,12 @@
                 console.error("Manual Fetch Error:", error);
             }
         }
-        grid.innerHTML = htmlContent;
+
+        if (htmlContent === '') {
+            grid.innerHTML = '<p style="color:red;">No articles found. Check Console (F12) for errors.</p>';
+        } else {
+            grid.innerHTML = htmlContent;
+        }
     }
 
     function startManual() {
@@ -239,10 +250,11 @@
             if (screen) screen.style.display = 'none';
         }, 800);
     }
-    </script>
+</script>
 </body>
 
 </html>
+
 
 
 
