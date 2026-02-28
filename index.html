@@ -186,32 +186,39 @@
         'ant-logic.json'
     ];
 
-    // --- NEW LOGIC: Check if user already entered ---
+    // Check if user already entered during this session
     window.onload = function() {
         if (sessionStorage.getItem('manualEntered') === 'true') {
             const screen = document.getElementById('flash-screen');
-            screen.style.display = 'none'; // Instant hide, no transition
-            loadManualArticles(); // Load content immediately
+            if (screen) screen.style.display = 'none'; 
+            loadManualArticles(); 
         }
     };
 
     async function loadManualArticles() {
         const grid = document.getElementById('mainGrid');
+        if (!grid) return;
+
         grid.innerHTML = '<p style="text-align:center; width:100%; color:var(--primary);">Accessing Manual Records...</p>';
 
         let htmlContent = '';
+
         for (const file of articleFiles) {
             try {
+                // Fetch the data from the /articles/ folder
                 const response = await fetch(`articles/${file}`);
                 if (!response.ok) throw new Error(`Could not find ${file}`);
                 const data = await response.json();
+
+                // Create the link by replacing .json with .html
+                const pageLink = `sub-page/${file.replace('.json', '.html')}`;
 
                 htmlContent += `
                     <article class="card">
                         <span class="category">${data.category}</span>
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
-                        <a href="sub-page/${file.replace('.json', '.html')}" class="btn">Read Manual</a>
+                        <a href="${pageLink}" class="btn">Read Manual</a>
                     </article>
                 `;
             } catch (error) {
@@ -223,21 +230,20 @@
 
     function startManual() {
         const screen = document.getElementById('flash-screen');
-        screen.classList.add('hidden');
+        if (screen) screen.classList.add('hidden');
         
-        // --- NEW LOGIC: Save state so they don't see flash again ---
         sessionStorage.setItem('manualEntered', 'true');
-        
         loadManualArticles();
 
         setTimeout(() => {
-            screen.style.display = 'none';
+            if (screen) screen.style.display = 'none';
         }, 800);
     }
-</script>
+    </script>
 </body>
 
 </html>
+
 
 
 
