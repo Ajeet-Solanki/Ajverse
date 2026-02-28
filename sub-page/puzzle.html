@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle</title>
+    <title>Puzzle | Manual for Life</title>
     <style>
         :root { --primary: #00d4ff; --dark: #0f172a; --text: #f8fafc; }
         body { 
@@ -12,10 +12,48 @@
         }
         .container { max-width: 800px; margin: 50px auto; padding: 20px; }
         .back-link { color: var(--primary); text-decoration: none; margin-bottom: 30px; display: block; font-weight: bold; }
-        h1 { color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); }
-        code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #e2e8f0; }
+        h1 { color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px; }
+        
+        /* RESPONSIVE IMAGE BOX */
+        .puzzle-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            margin-bottom: 30px;
+            display: block;
+        }
+
         .section { border-left: 3px solid var(--primary); padding-left: 20px; margin: 40px 0; }
         h2 { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; color: var(--primary); }
+
+        /* SOLUTION BUTTON & TEXT */
+        .solution-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 15px 30px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .solution-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        #solution-content {
+            display: none; 
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body onload="document.body.style.opacity='1'">
@@ -23,34 +61,47 @@
     <div class="container">
         <a href="../index.html" class="back-link">← BACK TO INDEX</a>
         <h1>The Case of the Cold Shower</h1>
+
+        <img src="../contents/Shower_Problem.png" alt="Electric Water Heater System Diagram" class="puzzle-image">
+
         <p>
-            The image above shows a pristine, modern bathroom with a standard electric water heater. A homeowner has just installed a high-efficiency, multi-function power shower head—the kind that promises a deluge of water from multiple jets. They are thrilled.<br>
-            However, after the very first shower, they have a complaint: "The shower starts perfectly hot, but after just 60 seconds, it goes completely ice cold! I have to wait 20 minutes for it to heat up again, and then it only lasts 60 seconds. My old shower head never did this. The heater is broken!"<br>
-            A junior plumbing apprentice visits and suggests replacing the heating element. As an experienced engineer, you look at the system and know the heating element is likely fine. You know exactly what’s wrong.<br>
+            The image above shows a pristine, modern bathroom with a standard electric water heater. A homeowner has just installed a high-efficiency, multi-function power shower head. They are thrilled.<br><br>
+            However, after the very first shower, they have a complaint: "The shower starts perfectly hot, but after just 60 seconds, it goes completely ice cold! My heater is broken!"<br><br>
             <b>The Question: What is the specific mechanical diagnosis for this symptom, and why did changing the shower head trigger it?</b>
         </p>
 
         <div class="section">
-            <h2>Hint 1</h2>
-            <p>
-                Thermodynamic Mixing: All water heaters must manage stratification. Hot water naturally rises to the top, and cold water enters at the bottom. The "hot" outlet must pull from the absolute top. How does the heater ensure this stratification is maintained during high flow?
-            </p>
-        </div>
-        
-        <div class="section">
-            <h2>Hint 2</h2>
-            <p>
-                The New Variable: Think about the one thing that changed. The new power shower head has a much higher flow rate (liters per minute) than the old one. If the heater's capacity (say, 50 liters) hasn't changed, but the tank is emptying much faster, what dynamic is now dominant?
-            </p>
+            <h2>Hint 1: Stratification</h2>
+            <p>Hot water naturally rises to the top, and cold water enters at the bottom. How does the heater ensure this stratification is maintained?</p>
         </div>
 
         <div class="section">
-            <h2>Hint 3</h2>
+            <h2>Hint 2: Flow Rates</h2>
+            <p>Think about the one thing that changed. The new power shower head has a much higher flow rate. What fluid dynamic is now dominant?</p>
+        </div>
+
+        <button class="solution-btn" onclick="revealSolution()">Reveal Mechanical Diagnosis</button>
+
+        <div id="solution-content">
+            <h2>The Diagnosis: Broken Dip Tube & Short Circuiting</h2>
             <p>
-                The "Dip Tube" Clue: If you were to look at a cross-section of the heater, the incoming cold water pipe doesn't just empty at the bottom. It often uses a long internal pipe, called a "dip tube," to deliver the cold water directly to the base of the tank.
+                The <strong>Dip Tube</strong> (which carries incoming cold water to the bottom of the tank) has likely cracked or broken near the top. <br><br>
+                <strong>The Mechanism:</strong> Normally, cold water enters the bottom, pushing the hot water at the top out. If the dip tube is broken at the top, the cold water "short-circuits"—it enters the top of the tank and immediately mixes with the hot water being drawn out. <br><br>
+                <strong>The Trigger:</strong> The old shower head had a low flow rate, allowing the water to stay somewhat stratified. The new **high-flow power head** creates higher turbulence, pulling that cold water straight into the shower line within 60 seconds!
             </p>
         </div>
     </div>
 
+    <script>
+        function revealSolution() {
+            const sol = document.getElementById('solution-content');
+            if (sol.style.display === "block") {
+                sol.style.display = "none";
+            } else {
+                sol.style.display = "block";
+                sol.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
