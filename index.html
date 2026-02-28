@@ -209,10 +209,10 @@
         for (const file of articleFiles) {
             try {
                 // Ensure this path matches your folder name EXACTLY
-                const response = await fetch(`articles/${file}`);
+                const response = await fetch(`Articles/${file}`);
                 
                 if (!response.ok) {
-                    console.error(`Failed to load: articles/${file} - Status: ${response.status}`);
+                    console.error(`Failed to load: Articles/${file} - Status: ${response.status}`);
                     continue;
                 }
 
@@ -254,6 +254,7 @@
 </body>
 
 </html>
+
 
 
 
